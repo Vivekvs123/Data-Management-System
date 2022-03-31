@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
         $rules = [
             'firstname'=>['required','min:2','alpha'],
             'lastname'=>['required','min:2','alpha'],
-            'email'=>['required','unique:users','email'],
+            'email'=>['required','email'],
             
             
             'status'=>['required'],

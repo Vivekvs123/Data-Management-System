@@ -9,6 +9,7 @@ use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Hash;
 Use Mail;
+use Illuminate\Support\Collection;
 class UserController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $users= User::with('Role')->paginate(6);
+       
         return view('admin.pages.showuser',compact('users'));
     }
         public function list()

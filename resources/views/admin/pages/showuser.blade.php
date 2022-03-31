@@ -32,7 +32,7 @@
                 <div class="card bg">
 
                 <div class="d-flex justify-content-between ">
-                    @if(Auth::User()->role_id=='1')
+                @if(Auth::User()->role_id!='3')
                     <div class="text-center">
                         <a href="{{url('users/create')}}" class="btn btn-success ml-5 mt-5">Add User</a>
                     </div>
@@ -60,7 +60,7 @@
                                 <!-- @php
                                 $sn=1;
                                 @endphp -->
-                                @foreach($users as $user)
+                                @foreach($users->reverse() as $user)
                                 <tr>
                                     <!-- <td>{{$sn}}</td> -->
                                     <td>{{$user->firstname}}</td>

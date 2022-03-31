@@ -1,5 +1,15 @@
 @extends('admin.master')
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+
+    .parsley-errors-list li{
+        list-style:none;
+        color:red;
+    }
+    
+
+ </style>
 <div class="content-wrapper">
 <div class="container mt-5  ">
     <div class="wrapper">
@@ -15,22 +25,22 @@
                             @csrf()
                             @method('PUT')
                             <div class="form-group">
-                                <label for="firstname">First Name</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter firstname" value="{{$users->firstname}}">
+                                <label for="firstname">First Name <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" required data-parsley-pattern="[a-zA-Z]+$" data-parsley-trigger="keyup" placeholder="Enter firstname" value="{{$users->firstname}}">
                                 @if($errors->has('firstname'))
                                 <label class="alert alert-danger">{{$errors->first('firstname')}}</label>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="lastname">Last Name</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter lastname" value="{{$users->lastname}}">
+                                <label for="lastname">Last Name <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
+                                <input type="text" class="form-control" id="lastname" name="lastname" required data-parsley-pattern="[a-zA-Z]+$" data-parsley-trigger="keyup" placeholder="Enter lastname" value="{{$users->lastname}}">
                                 @if($errors->has('lastname'))
                                 <label class="alert alert-danger">{{$errors->first('lastname')}}</label>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value="{{$users->email}}">
+                                <label for="email">Email address <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
+                                <input type="text" class="form-control" id="email" name="email" data-parsley-type="email" data-parsley-trigger="keyup" placeholder="Enter email" value="{{$users->email}}">
                                 @if($errors->has('email'))
                                 <label class="alert alert-danger">{{$errors->first('email')}}</label>
                                 @endif
@@ -75,4 +85,12 @@
     </div>
 </div>
 </div>
+<script>
+     $(document).ready(function() {
+    $(function(){
+        $("#adduser").parsley();
+    });
+});
+
+</script>
 @endsection

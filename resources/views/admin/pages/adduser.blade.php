@@ -2,16 +2,14 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<script>
-    $(function(){
-        $("#adduser").parsley();
-    });
-</script>
+
 <style>
+
     .parsley-errors-list li{
         list-style:none;
         color:red;
     }
+   
  </style>
 <div class="content-wrapper">
 <div class="container mt-5 ">
@@ -26,35 +24,35 @@
                     <form id="adduser" method="post" action="{{url('users')}}">
                         @csrf()
                         <div class="form-group">
-                            <label for="firstname">First Name <i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
+                            <label for="firstname">First Name <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup> </label>
                             <input type="text" class="form-control" id="firstname" name="firstname" required data-parsley-pattern="[a-zA-Z]+$" data-parsley-trigger="keyup" value="{{old('firstname')}}" placeholder="Enter firstname">
                             @if($errors->has('firstname'))
                             <label class="alert alert-danger">{{$errors->first('firstname')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="lastname">Last Name <i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
+                            <label for="lastname">Last Name <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
                             <input type="text" class="form-control" id="lastname" name="lastname" required data-parsley-pattern="[a-zA-Z]+$" data-parsley-trigger="keyup" value="{{old('lastname')}}" placeholder="Enter lastname">
                             @if($errors->has('lastname'))
                             <label class="alert alert-danger">{{$errors->first('lastname')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="email">Email address<i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
+                            <label for="email">Email address <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
                             <input type="text" class="form-control" id="email" name="email" data-parsley-type="email" data-parsley-trigger="keyup" value="{{old('email')}}" placeholder="Enter email">
                             @if($errors->has('email'))
                             <label class="alert alert-danger">{{$errors->first('email')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="password">Password<i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
+                            <label for="password">Password <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
                             <input type="password" class="form-control" id="password" name="password" data-parsley-length="[6,13]" data-parsley-trigger="keyup" value="{{old('password')}}" placeholder="Enter Password">
                             @if($errors->has('password'))
                             <label class="alert alert-danger">{{$errors->first('password')}}</label>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="cpassword">Confirm Password<i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
+                            <label for="cpassword">Confirm Password <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
                             <input type="password" class="form-control" id="cpassword" name="cpassword" data-parsley-equalto="#password" data-parsley-trigger="keyup" value="{{old('cpassword')}}" placeholder=" Enter Confirm Password">
                             @if($errors->has('cpassword'))
                             <label class="alert alert-danger">{{$errors->first('cpassword')}}</label>
@@ -75,7 +73,7 @@
                         <label class="alert alert-danger">{{$errors->first('status')}}</label>
                         @endif
                         <div>
-                            <label for="role">Role <i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
+                            <label for="role">Role <sup><i class="fa fa-asterisk" style="font-size:10px;color:red"></i></sup></label>
 
                             <select class="form-control" name="role">
                                 <option value="" disables selected>Select type</option>
@@ -97,4 +95,14 @@
 </div>
 </div>
 </div>
+<script>
+     $(document).ready(function() {
+    $(function(){
+        $("#adduser").parsley();
+    });
+});
+
+</script>
+
+
 @endsection
